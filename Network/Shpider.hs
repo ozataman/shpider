@@ -75,7 +75,6 @@ import           Network.Shpider.State
 import           Network.Shpider.URL
 import           System.Directory
 import           Text.HTML.TagSoup
-import           Text.HTML.TagSoup
 import           Text.Regex.Posix
 
 -- | if `keepTrack` has been set, then haveVisited will return `True` if the given URL has been visited.
@@ -265,12 +264,6 @@ sendForm form = do
                     postURL absAddr $ M.toList $ inputs form          
          )
          mabsAddr
-   
--- encodeUrl = undefined
-
--- toPostField :: (String, String) -> String
--- toPostField ( name , value ) =
---    encodeUrl name ++ "=" ++ encodeUrl value
 
 -- | Return the links on the current page.
 currentLinks :: Shpider [ Link ]
@@ -344,7 +337,7 @@ postURL url fields = withThrottle $ do
    cachedRequest url (opts shpider)
    where
     opts sh =
-      [ CurlPostFields (map (export . urlEncode) fields)
+      [ CurlPostFields $ map (export . urlEncode) fields
       , CurlPost True
       ] ++ curlOpts sh
 
