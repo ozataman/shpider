@@ -1,2 +1,6 @@
 dist/
 *.swp
+
+# Cabal Sandbox files
+.cabal-sandbox
+cabal.sandbox.config

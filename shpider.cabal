@@ -1,5 +1,5 @@
 Name:               shpider 
-Version:            0.2.2.0
+Version:            0.3.0.0
 Synopsis:           Web automation library in Haskell.
 Description:
     Shpider is a web automation library for Haskell.   It allows you to quickly
@@ -47,7 +47,7 @@ Library
     , time 
     , bytestring
     , transformers
-    , web-encodings
+    , urlencoded
    Exposed-modules: Network.Shpider.URL
                     Network.Shpider.Code
                     Network.Shpider.State
