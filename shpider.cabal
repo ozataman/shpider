@@ -28,13 +28,13 @@ Author:             Johnny Morrice <spoon@killersmurf.com>, Ozgun Ataman
 Maintainer:         Ozgun Ataman <ozataman@gmail.com>
 Homepage:           http://github.com/ozataman/shpider
 Build-type:         Simple
-Cabal-version:      >= 1.2.0
+Cabal-version:      >= 1.8.0
 Extra-source-files: 
 
 
 Library
    Build-depends:   
-      base < 5
+      base
     , regex-posix 
     , curl
     , directory       >= 1.0
