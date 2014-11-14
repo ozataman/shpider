@@ -66,6 +66,7 @@ import qualified Data.Map                as M
 import           Data.Maybe
 import           Data.Time
 import           Network.Curl
+import           Network.HTTP            hiding (GET, POST)
 import           Network.Shpider.Code
 import           Network.Shpider.Forms
 import           Network.Shpider.Links
