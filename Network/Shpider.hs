@@ -76,7 +76,6 @@ import           System.Directory
 import           Text.HTML.TagSoup
 import           Text.HTML.TagSoup
 import           Text.Regex.Posix
-import           Web.Encodings
 
 
 -- | if `keepTrack` has been set, then haveVisited will return `True` if the given URL has been visited.
@@ -268,7 +267,7 @@ sendForm form = do
          mabsAddr
    
 toPostField ( name , value ) =
-   encodeUrl name ++ "=" ++ encodeUrl value
+   urlEncode $ name ++ "=" ++ (urlEncode value)
 
 -- | Return the links on the current page.
 currentLinks :: Shpider [ Link ]
