@@ -3,19 +3,19 @@
  - Copyright (c) 2009-2010 Johnny Morrice
  -
  - Permission is hereby granted, free of charge, to any person
- - obtaining a copy of this software and associated documentation 
- - files (the "Software"), to deal in the Software without 
- - restriction, including without limitation the rights to use, copy, 
- - modify, merge, publish, distribute, sublicense, and/or sell copies 
- - of the Software, and to permit persons to whom the Software is 
+ - obtaining a copy of this software and associated documentation
+ - files (the "Software"), to deal in the Software without
+ - restriction, including without limitation the rights to use, copy,
+ - modify, merge, publish, distribute, sublicense, and/or sell copies
+ - of the Software, and to permit persons to whom the Software is
  - furnished to do so, subject to the following conditions:
  -
- - The above copyright notice and this permission notice shall be 
+ - The above copyright notice and this permission notice shall be
  - included in all copies or substantial portions of the Software.
  -
- - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+ - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  - EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- - MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+ - MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
  - NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
  - BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
  - ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
@@ -24,7 +24,7 @@
  -
 -}
 
-module Network.Shpider.URL 
+module Network.Shpider.URL
    ( module Network.URL
    , isSameDomain
    , mkAbsoluteUrl
@@ -33,14 +33,14 @@ module Network.Shpider.URL
    , isHttp
    , getDomain
    , getFolder
-   ) 
+   )
    where
 
-import Control.Monad.State
-import Network.URL
-import Network.Shpider.State
-import Text.Regex.Posix
-import Network.Shpider.TextUtils
+import           Control.Monad.State
+import           Network.Shpider.State
+import           Network.Shpider.TextUtils
+import           Network.URL
+import           Text.Regex.Posix
 
 -- | is the second url on the same domain as the first? Note: this will return False if either URL is invalid.
 isSameDomain :: String -> String -> Bool
@@ -109,12 +109,12 @@ isAbsoluteUrl urlStr =
 -- | is the given string of form \"mailto:person.com\"?
 isMailto :: String -> Bool
 isMailto =
-   flip (=~) "mailto:.*"
+   flip (=~) ("mailto:.*" :: String)
 
 -- | is the url a http url?
 isHttp :: String -> Bool
 isHttp =
-   flip (=~) "(http://|https://).*"
+    flip (=~) ("(http://|https://).*" :: String)
 
 -- | Get the protocol and domain from a URL eg
 --
@@ -124,18 +124,18 @@ isHttp =
 -- @
 getDomain :: String -> String
 getDomain =
-   flip (=~) "[^:]+://[^/]+" 
+   flip (=~) ("[^:]+://[^/]+" :: String)
 
 -- | Get the whole url up to and including the current folder of the present document.
--- 
--- @  
+--
+-- @
 --    getFolder \"widdle:\/\/owqueer.co.uk\/strangeanticsofsailors\/jimmy\"
 --    -- \"widdle:\/\/owqueer.co.uk\/strangeanticsofsailors\/\"
 -- @
 getFolder :: String -> String
 getFolder url =
   let ms =
-         url =~ "[^/]*/[^/]*"
+         url =~ ("[^/]*/[^/]*" :: String)
       l =
          length ms
   in

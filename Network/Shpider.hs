@@ -66,6 +66,7 @@ import qualified Data.Map                as M
 import           Data.Maybe
 import           Data.Time
 import           Network.Curl
+import           Network.HTTP            hiding (GET, POST)
 import           Network.Shpider.Code
 import           Network.Shpider.Forms
 import           Network.Shpider.Links
@@ -76,7 +77,6 @@ import           System.Directory
 import           Text.HTML.TagSoup
 import           Text.HTML.TagSoup
 import           Text.Regex.Posix
-import           Web.Encodings
 
 
 -- | if `keepTrack` has been set, then haveVisited will return `True` if the given URL has been visited.
@@ -268,7 +268,7 @@ sendForm form = do
          mabsAddr
    
 toPostField ( name , value ) =
-   encodeUrl name ++ "=" ++ encodeUrl value
+   urlEncode $ name ++ "=" ++ (urlEncode value)
 
 -- | Return the links on the current page.
 currentLinks :: Shpider [ Link ]
