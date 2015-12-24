@@ -34,13 +34,13 @@ Extra-source-files:
 
 Library
    Build-depends:   
-      base
+      base < 5
     , regex-posix 
     , curl
-    , directory       
-    , filepath        
-    , tagsoup-parsec  
-    , url
+    , directory       >= 1.0
+    , filepath        >= 1.2 && < 1.4
+    , tagsoup-parsec  >= 0.0.8
+    , url>=2 
     , containers 
     , tagsoup 
     , mtl
