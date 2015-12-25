@@ -34,20 +34,19 @@ Extra-source-files:
 
 Library
    Build-depends:   
-      base < 5
+      base
     , regex-posix 
     , curl
-    , directory       >= 1.0
-    , filepath        >= 1.2 && < 1.4
-    , tagsoup-parsec  >= 0.0.8
-    , url>=2 
+    , directory       
+    , filepath        
+    , tagsoup-parsec  
+    , url
     , containers 
     , tagsoup 
     , mtl
     , time 
     , bytestring
     , transformers
-    , web-encodings
    Exposed-modules: Network.Shpider.URL
                     Network.Shpider.Code
                     Network.Shpider.State
