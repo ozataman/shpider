@@ -47,7 +47,6 @@ Library
     , time 
     , bytestring
     , transformers
-    , web-encodings
    Exposed-modules: Network.Shpider.URL
                     Network.Shpider.Code
                     Network.Shpider.State
